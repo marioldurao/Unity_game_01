@@ -8,27 +8,18 @@ public class CameraControl : MonoBehaviour
     [SerializeField]
     private GameObject player;
 
-    private Vector3 offset;
-    private Vector3 finalOffset;
 
     // Start is called before the first frame update
     void Start()
     {
-        offset = transform.position - player.transform.position;
-        finalOffset = offset;
     }
 
 
     private void LateUpdate()
     {
-        Rotate();
-        transform.position = player.transform.position + finalOffset;
+        transform.position = player.transform.position - player.transform.forward * 30;
         transform.LookAt(player.transform.position);
-
+        transform.position = new Vector3(transform.position.x, transform.position.y +2 , transform.position.z);
     }
 
-    void Rotate()
-    {
-        finalOffset = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * 4f, Vector3.up) * finalOffset;
-    }
 }

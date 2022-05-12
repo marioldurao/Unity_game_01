@@ -15,6 +15,8 @@ static class Constants
 
 }
 
+
+
 public class Player : MonoBehaviour
 {
     [SerializeField] private Transform groundChecktransform = null;
@@ -42,13 +44,13 @@ public class Player : MonoBehaviour
             jumpKeyWasPressed = true;
         }
 
-        inputDir = new Vector3(Input.GetAxis("Horizontal") * Constants.MovSpeed_const, 0, Input.GetAxis("Vertical") * Constants.MovSpeed_const);
+        //inputDir = new Vector3(Input.GetAxis("Horizontal") * Constants.MovSpeed_const, 0, Input.GetAxis("Vertical") * Constants.MovSpeed_const);
+        inputDir = new Vector3(0, 0, Input.GetAxis("Vertical") * Constants.MovSpeed_const);
         inputDir = Camera.main.transform.TransformDirection(inputDir);
         
         //inputDir.Normalize();
 
         Rotation();
-
 
     }
 
@@ -58,8 +60,6 @@ public class Player : MonoBehaviour
     {
         inputDir.y = GetComponent<Rigidbody>().velocity.y;
         rigidBodyComponent.velocity = inputDir;
-
-        //rigidBodyComponent.velocity = new Vector3(horizontalInput*2, GetComponent<Rigidbody>().velocity.y, longitudinalInput*2);
 
 
         if (Physics.OverlapSphere(groundChecktransform.position, 0.1f, playerMask).Length == 1)
@@ -122,18 +122,15 @@ public class Player : MonoBehaviour
                 GameObject.Find("/Targets/NA2").GetComponent<Renderer>().enabled = true;
             }
          
-
             Destroy(other.gameObject);
             supperJumpsRemaining++;
-
-
         }
       
     }
 
     void Rotation()
     {
-        transform.Rotate(new Vector3(0,Input.GetAxis("Mouse X")* Constants.RotationSpeed_const, 0));
+        transform.Rotate(new Vector3(0, Input.GetAxis("Horizontal") * Constants.RotationSpeed_const, 0));
     }
 
 }

@@ -17,7 +17,7 @@ public class CameraControl : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = player.transform.position - player.transform.forward * 30;
+        transform.position = player.transform.position - player.transform.forward * 20;
         transform.LookAt(player.transform.position);
         transform.position = new Vector3(transform.position.x, transform.position.y +2 , transform.position.z);
     }

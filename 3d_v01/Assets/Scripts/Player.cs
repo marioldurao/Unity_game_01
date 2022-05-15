@@ -10,7 +10,7 @@ static class Constants
 {
     public const float jumpPower_const = 6;
     public const float jumpPowerfactor_const = 2;
-    public const int RotationSpeed_const = 4;
+    public const int RotationSpeed_const = 2;
     public const int MovSpeed_const = 10;
 
 }
@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             jumpKeyWasPressed = true;
         }
@@ -104,7 +104,7 @@ public class Player : MonoBehaviour
 
         if (other.gameObject.layer == 9)
         {
-            GameObject textObject = GameObject.Find("/Player/guessWord");
+            GameObject textObject = GameObject.Find("/Player/Canvas/Panel/guessWord");
             TextMesh textword = textObject.GetComponent<TextMesh>();
             textword.text += other.GetComponent<TextMesh>().text;
             //textword.text = other.GetComponent<TextMesh>().text;

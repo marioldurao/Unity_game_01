@@ -8,6 +8,8 @@ public class On_Click_Button : MonoBehaviour
 
     private string myText = "BANANA";
   
+    public Image mImage;
+
     public void VerifyMatch()
     {
         GameObject textObject = GameObject.Find("/Player/Canvas/Panel/guessWord");
@@ -17,10 +19,19 @@ public class On_Click_Button : MonoBehaviour
 
         if (0==compareRes)
         {
+            mImage = GetComponent<Image>();
+            Sprite msprite = Resources.Load<Sprite>("Correcto");
+            mImage.sprite = msprite;
+          
             Debug.Log("correct banana");
         }
         else
         {
+            mImage = GetComponent<Image>();
+            Sprite msprite = Resources.Load<Sprite>("Incorrecto");
+            mImage.sprite = msprite;
+
+        
             Debug.Log("wrong banana");
         }
     }

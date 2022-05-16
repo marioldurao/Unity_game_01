@@ -1051,7 +1051,7 @@ GameObject:
   - component: {fileID: 756423728}
   - component: {fileID: 756423727}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Button_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1414,7 +1414,7 @@ GameObject:
   - component: {fileID: 1064934454}
   - component: {fileID: 1064934453}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Button_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1902,7 +1902,7 @@ GameObject:
   - component: {fileID: 1229805452}
   - component: {fileID: 1229805455}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1971,9 +1971,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1229805452}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
-        m_MethodName: Select
+      - m_Target: {fileID: 1229805455}
+        m_TargetAssemblyTypeName: On_Click_Button, Assembly-CSharp
+        m_MethodName: VerifyMatch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2033,6 +2033,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75362fdcb68fd4541ad65e5c17d5106e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mImage: {fileID: 1229805453}
+  mButton: {fileID: 1229805452}
 --- !u!1 &1268764609
 GameObject:
   m_ObjectHideFlags: 0

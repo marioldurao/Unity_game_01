@@ -48,14 +48,14 @@ public class On_Click_Button : MonoBehaviour
             textObject.GetComponent<TextMesh>().text = "";
             Debug.Log("correct " + myText);
         }
-        else
+/*        else
         {
             Sprite msprite = Resources.Load<Sprite>("Incorrecto");
             textObject.GetComponent<TextMesh>().text = "";
             mImage.sprite = msprite;
 
             Debug.Log("wrong " + myText);
-        }
+        }*/
         //clear when click on incorrect
         if (myText == "incorrecto")
         {

@@ -68,10 +68,23 @@ public static class GameController
                 {
                     Debug.Log("update controller Case " + Globals.gameState);
                 }
+                
+                GameObject.Find("/Targets/SIL_1").SetActive(true);
+                GameObject.Find("/Targets/SIL_2").SetActive(true);
+                GameObject.Find("/Targets/SIL_3").SetActive(true);
 
                 GameObject.Find("/Targets/SIL_1").GetComponent<TextMesh>().text = "BIS";
                 GameObject.Find("/Targets/SIL_2").GetComponent<TextMesh>().text = "COI";
                 GameObject.Find("/Targets/SIL_3").GetComponent<TextMesh>().text = "TO";
+
+                //reveal SIL 1
+                GameObject.Find("/Targets/SIL_1").GetComponent<Renderer>().enabled = true;
+                GameObject.Find("/Targets/SIL_1").GetComponent<SphereCollider>().enabled = true;
+                //Hide SIL 1 and 2
+                GameObject.Find("/Targets/SIL_2").GetComponent<Renderer>().enabled = false;
+                GameObject.Find("/Targets/SIL_2").GetComponent<SphereCollider>().enabled = false;
+                GameObject.Find("/Targets/SIL_3").GetComponent<Renderer>().enabled = false;
+                GameObject.Find("/Targets/SIL_3").GetComponent<SphereCollider>().enabled = false;
                 // code block
                 break;
             default:

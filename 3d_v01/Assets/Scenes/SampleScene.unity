@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 241928884}
   - component: {fileID: 241928883}
   m_Layer: 9
-  m_Name: NA2
+  m_Name: SIL_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -844,7 +844,7 @@ GameObject:
   - component: {fileID: 630957193}
   - component: {fileID: 630957196}
   m_Layer: 9
-  m_Name: BA
+  m_Name: SIL_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1050,6 +1050,7 @@ GameObject:
   - component: {fileID: 756423729}
   - component: {fileID: 756423728}
   - component: {fileID: 756423727}
+  - component: {fileID: 756423730}
   m_Layer: 5
   m_Name: Button_1
   m_TagString: Untagged
@@ -1119,7 +1120,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 756423728}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 756423730}
+        m_TargetAssemblyTypeName: On_Click_Button_0, Assembly-CSharp
+        m_MethodName: VerifyMatch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &756423728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1158,6 +1171,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 756423725}
   m_CullTransparentMesh: 1
+--- !u!114 &756423730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756423725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75362fdcb68fd4541ad65e5c17d5106e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mImage: {fileID: 0}
 --- !u!1 &770432868
 GameObject:
   m_ObjectHideFlags: 0
@@ -1413,6 +1439,7 @@ GameObject:
   - component: {fileID: 1064934455}
   - component: {fileID: 1064934454}
   - component: {fileID: 1064934453}
+  - component: {fileID: 1064934456}
   m_Layer: 5
   m_Name: Button_2
   m_TagString: Untagged
@@ -1482,7 +1509,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1064934454}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1064934456}
+        m_TargetAssemblyTypeName: On_Click_Button_0, Assembly-CSharp
+        m_MethodName: VerifyMatch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &1064934454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1521,6 +1560,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1064934451}
   m_CullTransparentMesh: 1
+--- !u!114 &1064934456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064934451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75362fdcb68fd4541ad65e5c17d5106e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mImage: {fileID: 0}
 --- !u!1 &1107059122
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,7 +1844,7 @@ GameObject:
   - component: {fileID: 1228968208}
   - component: {fileID: 1228968207}
   m_Layer: 9
-  m_Name: NA1
+  m_Name: SIL_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2034,7 +2086,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mImage: {fileID: 1229805453}
-  mButton: {fileID: 1229805452}
 --- !u!1 &1268764609
 GameObject:
   m_ObjectHideFlags: 0

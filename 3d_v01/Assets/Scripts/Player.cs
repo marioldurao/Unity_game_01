@@ -6,13 +6,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum gameStateEnum
+{
+    WORD_1,
+    WORD_2,
+    WORD_3,
+    WORD_4
+}
+
 static class Constants
 {
     public const float jumpPower_const = 6;
     public const float jumpPowerfactor_const = 2;
     public const int RotationSpeed_const = 2;
     public const int MovSpeed_const = 10;
+}
 
+public class Globals
+{
+    public static gameStateEnum gameState = gameStateEnum.WORD_1;
 }
 
 
@@ -26,19 +39,20 @@ public class Player : MonoBehaviour
     private Vector3 inputDir;
     private Rigidbody rigidBodyComponent;
     private int supperJumpsRemaining = 0;
-
+    
 
     // Start is called before the first frame update
     void Start()
     {
         rigidBodyComponent = GetComponent<Rigidbody>();
-        GameObject.Find("/Targets/NA1").GetComponent<Renderer>().enabled = false;
-        GameObject.Find("/Targets/NA2").GetComponent<Renderer>().enabled = false;
+        GameController.Start_Controller();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+       
         if (Input.GetKeyDown(KeyCode.Space))
         {
             jumpKeyWasPressed = true;
@@ -51,7 +65,6 @@ public class Player : MonoBehaviour
         //inputDir.Normalize();
 
         Rotation();
-
     }
 
 
@@ -96,12 +109,13 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == 7)
+        //Sillabus target
+        if (other.gameObject.layer == 7)
         {
             Destroy(other.gameObject);
             supperJumpsRemaining++;
         }
-
+        //Sillabus target
         if (other.gameObject.layer == 9)
         {
             GameObject textObject = GameObject.Find("/Player/Canvas/Panel/guessWord");
@@ -111,18 +125,38 @@ public class Player : MonoBehaviour
             Debug.Log("guessWord change text");
 
 
-            if(other.GetComponent<TextMesh>().text == "BA")
+            if(other.name == "SIL_1")
+            {
+
+                other.GetComponent<Renderer>().enabled = false;
+                other.GetComponent<SphereCollider>().enabled = false;
+                GameObject.Find("/Targets/SIL_2").GetComponent<Renderer>().enabled = true;
+                GameObject.Find("/Targets/SIL_2").GetComponent<SphereCollider>().enabled = true;
+                Debug.Log("1st sillabus done");
+            }
+            else if (other.name == "SIL_2")
             {
                 other.GetComponent<Renderer>().enabled = false;
-
-                GameObject.Find("/Targets/NA1").GetComponent<Renderer>().enabled = true;
+                other.GetComponent<SphereCollider>().enabled = false;
+                GameObject.Find("/Targets/SIL_3").GetComponent<Renderer>().enabled = true;
+                GameObject.Find("/Targets/SIL_3").GetComponent<SphereCollider>().enabled = true;
+                Debug.Log("2nd sillabus done");
             }
-            else if (other.GetComponent<TextMesh>().text == "NA")
+            else if (other.name == "SIL_3")
             {
-                GameObject.Find("/Targets/NA2").GetComponent<Renderer>().enabled = true;
+                other.GetComponent<Renderer>().enabled = false;
+                other.GetComponent<SphereCollider>().enabled = false;
+                GameObject.Find("/Player/Canvas/Panel/Button_0").SetActive(true);
+                GameObject.Find("/Player/Canvas/Panel/Button_1").SetActive(true);
+                GameObject.Find("/Player/Canvas/Panel/Button_2").SetActive(true);
+                Debug.Log("3rd sillabus done");
             }
-         
-            Destroy(other.gameObject);
+
+            Debug.Log(other.name);
+
+            
+            //other.gameObject.SetActive(true);
+            //Destroy(other.gameObject);
             supperJumpsRemaining++;
         }
       

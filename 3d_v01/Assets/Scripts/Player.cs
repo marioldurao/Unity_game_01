@@ -1,18 +1,16 @@
 
-
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 
 public enum gameStateEnum
 {
     WORD_1,
     WORD_2,
     WORD_3,
-    WORD_4
+    WORD_4,
+    WINNER
 }
 
 static class Constants
@@ -26,6 +24,7 @@ static class Constants
 public class Globals
 {
     public static gameStateEnum gameState = gameStateEnum.WORD_1;
+    public static bool WaitForAnswer = false;
 }
 
 
@@ -46,7 +45,6 @@ public class Player : MonoBehaviour
     {
         rigidBodyComponent = GetComponent<Rigidbody>();
         GameController.Start_Controller();
-
     }
 
     // Update is called once per frame
@@ -58,13 +56,16 @@ public class Player : MonoBehaviour
             jumpKeyWasPressed = true;
         }
 
-        //inputDir = new Vector3(Input.GetAxis("Horizontal") * Constants.MovSpeed_const, 0, Input.GetAxis("Vertical") * Constants.MovSpeed_const);
-        inputDir = new Vector3(0, 0, Input.GetAxis("Vertical") * Constants.MovSpeed_const);
-        inputDir = Camera.main.transform.TransformDirection(inputDir);
-        
-        //inputDir.Normalize();
-
-        Rotation();
+        if (Globals.WaitForAnswer == false)
+        {           
+            inputDir = new Vector3(0, 0, Input.GetAxis("Vertical") * Constants.MovSpeed_const);
+            inputDir = Camera.main.transform.TransformDirection(inputDir);
+            Rotation();
+        }
+        else //force to stop
+        {
+            inputDir = new Vector3(0, 0, 0);
+        }        
     }
 
 
@@ -73,7 +74,6 @@ public class Player : MonoBehaviour
     {
         inputDir.y = GetComponent<Rigidbody>().velocity.y;
         rigidBodyComponent.velocity = inputDir;
-
 
         if (Physics.OverlapSphere(groundChecktransform.position, 0.1f, playerMask).Length == 1)
         {
@@ -124,7 +124,6 @@ public class Player : MonoBehaviour
             //textword.text = other.GetComponent<TextMesh>().text;
             Debug.Log("guessWord change text");
 
-
             if(other.name == "SIL_1")
             {
 
@@ -150,16 +149,13 @@ public class Player : MonoBehaviour
                 GameObject.Find("/Player/Canvas/Panel/Button_1").SetActive(true);
                 GameObject.Find("/Player/Canvas/Panel/Button_2").SetActive(true);
                 Debug.Log("3rd sillabus done");
+                Globals.WaitForAnswer = true;
             }
 
             Debug.Log(other.name);
 
-            
-            //other.gameObject.SetActive(true);
-            //Destroy(other.gameObject);
             supperJumpsRemaining++;
-        }
-      
+        }      
     }
 
     void Rotation()

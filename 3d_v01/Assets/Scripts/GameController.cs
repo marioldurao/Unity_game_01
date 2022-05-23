@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public static class GameController
 {
 
@@ -51,6 +51,9 @@ public static class GameController
                 GameObject.Find("/Targets/SIL_1").GetComponent<TextMesh>().text = "MA";
                 GameObject.Find("/Targets/SIL_2").GetComponent<TextMesh>().text = "CA";
                 GameObject.Find("/Targets/SIL_3").GetComponent<TextMesh>().text = "CO";
+                GameObject.Find("/Targets/SIL_1").GetComponent<Transform>().position = new Vector3(3,2,10);
+                GameObject.Find("/Targets/SIL_2").GetComponent<Transform>().position = new Vector3(3, 2, 4);
+                GameObject.Find("/Targets/SIL_3").GetComponent<Transform>().position = new Vector3(10, 2, -10);
                 //reveal SIL 1
                 GameObject.Find("/Targets/SIL_1").GetComponent<Renderer>().enabled = true;
                 GameObject.Find("/Targets/SIL_1").GetComponent<SphereCollider>().enabled = true;
@@ -73,9 +76,12 @@ public static class GameController
                 GameObject.Find("/Targets/SIL_2").SetActive(true);
                 GameObject.Find("/Targets/SIL_3").SetActive(true);
 
-                GameObject.Find("/Targets/SIL_1").GetComponent<TextMesh>().text = "BIS";
-                GameObject.Find("/Targets/SIL_2").GetComponent<TextMesh>().text = "COI";
-                GameObject.Find("/Targets/SIL_3").GetComponent<TextMesh>().text = "TO";
+                GameObject.Find("/Targets/SIL_1").GetComponent<TextMesh>().text = "BO";
+                GameObject.Find("/Targets/SIL_2").GetComponent<TextMesh>().text = "LA";
+                GameObject.Find("/Targets/SIL_3").GetComponent<TextMesh>().text = "CHA";
+                GameObject.Find("/Targets/SIL_1").GetComponent<Transform>().position = new Vector3(16, 2, -20);
+                GameObject.Find("/Targets/SIL_2").GetComponent<Transform>().position = new Vector3(30, 2, -4);
+                GameObject.Find("/Targets/SIL_3").GetComponent<Transform>().position = new Vector3(20, 2, -30);
 
                 //reveal SIL 1
                 GameObject.Find("/Targets/SIL_1").GetComponent<Renderer>().enabled = true;
@@ -85,6 +91,28 @@ public static class GameController
                 GameObject.Find("/Targets/SIL_2").GetComponent<SphereCollider>().enabled = false;
                 GameObject.Find("/Targets/SIL_3").GetComponent<Renderer>().enabled = false;
                 GameObject.Find("/Targets/SIL_3").GetComponent<SphereCollider>().enabled = false;
+                // code block
+                break;
+            case gameStateEnum.WINNER:
+
+                debug_out = 1;
+                if (1 == debug_out)
+                {
+                    Debug.Log("update controller Case " + Globals.gameState);
+                }
+
+                Image mImage;
+                
+                mImage = GameObject.Find("/Player/Canvas/Panel/Button_0").GetComponent<Image>();
+                Sprite msprite = Resources.Load<Sprite>("vencedor");
+                mImage.sprite = msprite;
+                mImage = GameObject.Find("/Player/Canvas/Panel/Button_1").GetComponent<Image>();                
+                mImage.sprite = msprite;
+                mImage = GameObject.Find("/Player/Canvas/Panel/Button_2").GetComponent<Image>();                
+                mImage.sprite = msprite;
+                mImage = GameObject.Find("/Player/Canvas/Panel").GetComponent<Image>();
+                mImage.sprite = msprite;
+
                 // code block
                 break;
             default:

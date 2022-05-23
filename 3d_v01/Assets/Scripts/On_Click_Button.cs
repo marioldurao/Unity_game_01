@@ -24,6 +24,7 @@ public class On_Click_Button : MonoBehaviour
         {
             Sprite msprite = Resources.Load<Sprite>("Correcto");
             mImage.sprite = msprite;
+            Globals.WaitForAnswer = false;
 
             switch (Globals.gameState)
             {
@@ -36,7 +37,7 @@ public class On_Click_Button : MonoBehaviour
                     // code block
                     break;
                 case gameStateEnum.WORD_3:
-                    Globals.gameState = gameStateEnum.WORD_1;
+                    Globals.gameState = gameStateEnum.WINNER;
                     // code block
                     break;
                 default:
@@ -57,10 +58,7 @@ public class On_Click_Button : MonoBehaviour
             Debug.Log("wrong " + myText);
         }*/
         //clear when click on incorrect
-        if (myText == "incorrecto")
-        {
-            mImage.sprite.name = "MACACO";
-        }
+
     }
 
 }
